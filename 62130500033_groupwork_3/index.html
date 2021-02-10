@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Vue Js - HelloWorld App</title>
+
+  <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+  <!-- Using via Google Web Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- https://tailwindcss.com/docs/installation -->
+  <!-- Using Tailwind via CDN -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+
+<body>
+  <div id="app" class="max-w-xl mx-auto my-10 space-y-3">
+    <h3 class="font-mono text-2xl">Image Count:{{count}}</h3>
+    <table class="table-auto font-mono text-2xl">
+        <thead>
+          <tr class="h-14">
+            <th>Card</th>
+            <th>Win Rates</th>
+            <th>Favorite </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(image,index) in img">
+            <td>
+                <img :src="image.src" class=" h-60 w-auto cursor-pointer hover:opacity-50 transition delay-75" @click="addFav(index)" @mouseover="preFav(index)"   @mouseleave="addFav(index)">            
+            </td>
+            <td ><h3 class="px-20">{{image.rate}}</h3></td>
+            <td><svg v-show="image.fav" :xmlns="svg" class="mx-auto fill-current text-red-600" width="40" height="40" viewBox="0 0 24 24"><path d="M18 1l-6 4-6-4-6 5v7l12 10 12-10v-7z"/></svg></td>
+        </tr>
+          
+        </tbody>
+      </table>
+  </div>
+
+  <!-- my main.js -->
+  <script src="./main.js"></script>
+</body>
+
+</html>
